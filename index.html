@@ -1,167 +1,176 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>**حسن** **علي** | Hassn Ali Portfolio</title>  
-    <style>  
-        body {  
-            background-color: #0c0a09;  
-            color: #f5f5f4;  
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
-            margin: 0;  
-            padding: 0;  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
-            min-height: 100vh;  
-        }  
-        header {  
-            width: 100%;  
-            padding: 30px 20px;  
-            text-align: center;  
-            background: linear-gradient(to bottom, #1c1917, #0c0a09);  
-            border-bottom: 2px solid #78350f;  
-            box-sizing: border-box;  
-        }  
-        .signature-container {  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            margin-bottom: 10px;  
-        }  
-        .signature-svg {  
-            width: 180px;  
-            height: auto;  
-            stroke: #d97706;  
-            stroke-width: 3;  
-            fill: none;  
-            stroke-linecap: round;  
-            stroke-linejoin: round;  
-        }  
-        header h1 {  
-            margin: 5px 0 0 0;  
-            font-size: 1.8rem;  
-            color: #d97706;  
-            letter-spacing: 1px;  
-        }  
-        header p {  
-            margin: 5px 0 0 0;  
-            color: #a8a29e;  
-            font-size: 1rem;  
-        }  
-        .portfolio-container {  
-            max-width: 1200px;  
-            width: 90%;  
-            padding: 40px 0;  
-            display: grid;  
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));  
-            gap: 30px;  
-            box-sizing: border-box;  
-        }  
-        .video-card {  
-            background-color: #1c1917;  
-            border: 1px solid #451a03;  
-            border-radius: 12px;  
-            overflow: hidden;  
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);  
-            transition: transform 0.3s ease, border-color 0.3s ease;  
-        }  
-        .video-card:hover {  
-            transform: translateY(-5px);  
-            border-color: #d97706;  
-        }  
-        .video-wrapper {  
-            position: relative;  
-            padding-bottom: 56.25%;  
-            height: 0;  
-            overflow: hidden;  
-        }  
-        .video-wrapper iframe {  
-            position: absolute;  
-            top: 0;  
-            left: 0;  
-            width: 100%;  
-            height: 100%;  
-            border: 0;  
-        }  
-        .video-info {  
-            padding: 20px;  
-        }  
-        .video-info h3 {  
-            margin: 0 0 10px 0;  
-            font-size: 1.2rem;  
-            color: #f5f5f4;  
-        }  
-        .video-info p {  
-            margin: 0;  
-            color: #a8a29e;  
-            font-size: 0.9rem;  
-            line-height: 1.5;  
-        }  
-        footer {  
-            width: 100%;  
-            padding: 20px;  
-            text-align: center;  
-            background-color: #1c1917;  
-            border-top: 1px solid #451a03;  
-            color: #78716c;  
-            font-size: 0.85rem;  
-            margin-top: auto;  
-            box-sizing: border-box;  
-        }  
-    </style>  
-</head>  
-<body>  
-  
-    <header>  
-        <div class="signature-container">  
-            <svg class="signature-svg" viewBox="0 0 200 100">  
-                <path d="M 40,55 Q 50,55 55,50 T 65,55 T 75,50 Q 85,10 88,55 Q 85,25 93,25 Q 90,55 110,55 C 80,75 80,45 83,25 M 82,30 Q 92,20 95,30 M 80,50 L 140,46 Q 135,40 135,52" />  
-            </svg>  
-        </div>  
-        <h1>**حسن** **علي** | Hassn Ali</h1>  
-        <p>Videographer & Video Editor</p>  
-    </header>  
-  
-    <div class="portfolio-container">  
-        <!-- **الفيديو** **الأول** -->  
-        <div class="video-card">  
-            <div class="video-wrapper">  
-                <iframe src="https://facebook.com" allowfullscreen></iframe>  
-            </div>  
-            <div class="video-info">  
-                <h3>**أعمال** **المونتاج** **والتصوير** - **العمل** **الأول**</h3>  
-                <p>**اضغط** **لتشغيل** **الفيديو** **واستعراض** **جودة** **الإخراج** **والتعديل** **مباشرة** **من** **فيسبوك**.</p>  
-            </div>  
-        </div>  
-  
-        <!-- **الفيديو** **الثاني** -->  
-        <div class="video-card">  
-            <div class="video-wrapper">  
-                <iframe src="https://facebook.com" allowfullscreen></iframe>  
-            </div>  
-            <div class="video-info">  
-                <h3>**أعمال** **المونتاج** **والتصوير** - **العمل** **الثاني**</h3>  
-                <p>**عرض** **سينمائي** **مميز** **مدمج** **في** **معرض** **الأعمال** **الرئيسي**.</p>  
-            </div>  
-        </div>  
-  
-        <!-- **الفيديو** **الثالث** -->  
-        <div class="video-card">  
-            <div class="video-wrapper">  
-                <iframe src="https://facebook.com" allowfullscreen></iframe>  
-            </div>  
-            <div class="video-info">  
-                <h3>**أعمال** **المونتاج** **والتصوير** - **العمل** **الثالث**</h3>  
-                <p>**لقطات** **وإخراج** **إبداعي** **مخصص** **للبورتفوليو** **الشخصي**.</p>  
-            </div>  
-        </div>  
-    </div>  
-  
-    <footer>  
-        <p>&copy; 2026 **حسن** **علي**. **جميع** **الحقوق** **محفوظة**.</p>  
-    </footer>  
-  
-</body>  
-</html>  
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassn Ali | Videographer & Editor Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #070504; /* أسود داكن جداً مائل للبني */
+            color: #fafaf9;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        header {
+            width: 100%;
+            padding: 40px 20px 25px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #140e0b, #070504); /* تدرج بني غامق جداً */
+            border-bottom: 1px solid #2e180b;
+        }
+        .signature-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 12px rgba(69, 26, 3, 0.6));
+        }
+        .signature-svg {
+            width: 240px;
+            height: auto;
+            stroke: #5c2c16; /* لون الإمضة بني غامق فخم */
+            stroke-width: 2.2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        header h1 {
+            margin: 5px 0 5px 0;
+            font-size: 2rem;
+            color: #5c2c16; /* اسمك بالبني الغامق الفخم */
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        header p {
+            margin: 0;
+            color: #78716c;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .portfolio-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+        .video-card {
+            background-color: #100b09; /* خلفية الكروت بني داكن جداً */
+            border: 1px solid #23150d;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .video-card:active, .video-card:hover {
+            transform: scale(1.02);
+            border-color: #5c2c16; /* يضيء بالبني الداكن عند التفاعل */
+            box-shadow: 0 0 20px rgba(92, 44, 22, 0.3);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-info {
+            padding: 20px;
+            border-top: 1px solid #23150d;
+        }
+        .video-info h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.3rem;
+            color: #fafaf9;
+            font-weight: 600;
+        }
+        .video-info p {
+            margin: 0;
+            color: #8c8581;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        footer {
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #100b09;
+            border-top: 1px solid #23150d;
+            color: #57524e;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="signature-container">
+            <svg class="signature-svg" viewBox="0 0 240 120">
+                <path d="M 45,55 Q 52,56 57,51 T 64,54 T 70,51 Q 78,48 83,52 C 86,30 84,12 87,42 C 90,62 81,72 98,62 C 104,58 108,54 110,48 M 84,32 Q 95,24 99,35 M 76,55 Q 110,50 148,48 Q 140,43 141,53" />
+            </svg>
+        </div>
+        <h1>Hassn Ali</h1>
+        <p>Videographer & Video Editor</p>
+    </header>
+
+    <div class="portfolio-container">
+        <!-- Video 1 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://facebook.com" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Cinematic Showreel / Project I</h3>
+                <p>Professional video editing, sound design, and color grading tailored for high-end visual storytelling.</p>
+            </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://facebook.com" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Creative Direction / Project II</h3>
+                <p>Capturing stunning visual compositions with seamless transitions and dynamic camera movements.</p>
+            </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://facebook.com" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Visual Storytelling / Project III</h3>
+                <p>An artistic showcase highlighting expertise in creative framing, pacing, and post-production workflows.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hassn Ali. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
