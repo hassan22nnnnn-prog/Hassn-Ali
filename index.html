@@ -25,7 +25,7 @@
             padding: 45px 20px 30px 20px;
             text-align: center;
             background: linear-gradient(to bottom, #1a0e07, #000000);
-            border-bottom: 1px solid #593119;
+            border-bottom: 2px solid #593119;
         }
         .signature-container {
             display: flex;
@@ -35,10 +35,10 @@
             filter: drop-shadow(0 0 15px rgba(89, 49, 25, 0.7));
         }
         .signature-svg {
-            width: 260px; /* تم تكبير العرض لضمان ظهور كامل تفاصيل الإمضة */
+            width: 260px;
             height: auto;
             stroke: #593119;
-            stroke-width: 2.5; /* سمك مثالي وواضح للخط */
+            stroke-width: 2.5;
             fill: none;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -57,78 +57,52 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .portfolio-container {
+        .portfolio-grid {
             width: 100%;
-            max-width: 600px;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
+            max-width: 1200px;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
         }
         .video-card {
-            background-color: #0a0503;
-            border: 1px solid #1f1109;
+            background-color: #050302;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        /* اللاين البني الفاصل بين الفيديوهات */
+        .video-card::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background-color: #593119;
+        }
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* مقاس مربع متناسق جداً مع فيديوهات إنستغرام المباشرة */
+            background-color: #000;
+            border: 1px solid #1f1109;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.8);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .video-card:hover {
+        .video-wrapper:hover {
             transform: scale(1.02);
             border-color: #593119;
-            box-shadow: 0 0 25px rgba(89, 49, 25, 0.5);
+            box-shadow: 0 0 20px rgba(89, 49, 25, 0.4);
         }
-        .video-poster {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: linear-gradient(135deg, #1a0e07 0%, #050302 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background-color: #593119;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 20px rgba(89, 49, 25, 0.6);
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        .play-btn:hover {
-            background-color: #733f20;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        .play-btn svg {
-            width: 25px;
-            height: 25px;
-            fill: #fafaf9;
-            margin-left: 4px;
-        }
-        .video-info {
-            padding: 20px;
-            border-top: 1px solid #1f1109;
-            background-color: #050302;
-        }
-        .video-info h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.3rem;
-            color: #fafaf9;
-            font-weight: 600;
-        }
-        .video-info p {
-            margin: 0;
-            color: #a8a29e;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
         footer {
             width: 100%;
@@ -146,7 +120,6 @@
 
     <header>
         <div class="signature-container">
-            <!-- مسار الإمضة الانسيابي الجديد المظبوط برمجياً على مقاس الشاشة -->
             <svg class="signature-svg" viewBox="0 0 260 130">
                 <path d="M 35,65 Q 45,66 52,58 T 62,62 T 72,56 Q 82,50 88,58 C 92,32 88,10 93,42 C 96,66 84,78 105,66 C 112,62 118,56 120,48 M 88,32 Q 102,22 108,35 M 72,62 Q 115,55 165,52 Q 155,45 156,58" />
             </svg>
@@ -155,43 +128,81 @@
         <p>Videographer & Video Editor</p>
     </header>
 
-    <div class="portfolio-container">
+    <div class="portfolio-grid">
         <!-- Video 1 -->
         <div class="video-card">
-            <div class="video-poster">
-                <a href="https://facebook.com" target="_blank" class="play-btn">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </a>
-            </div>
-            <div class="video-info">
-                <h3>Cinematic Showreel / Project I</h3>
-                <p>Professional video editing, sound design, and color grading tailored for high-end visual storytelling.</p>
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
             </div>
         </div>
 
         <!-- Video 2 -->
         <div class="video-card">
-            <div class="video-poster">
-                <a href="https://facebook.com" target="_blank" class="play-btn">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </a>
-            </div>
-            <div class="video-info">
-                <h3>Creative Direction / Project II</h3>
-                <p>Capturing stunning visual compositions with seamless transitions and dynamic camera movements.</p>
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
             </div>
         </div>
 
         <!-- Video 3 -->
         <div class="video-card">
-            <div class="video-poster">
-                <a href="https://facebook.com" target="_blank" class="play-btn">
-                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </a>
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
             </div>
-            <div class="video-info">
-                <h3>Visual Storytelling / Project III</h3>
-                <p>An artistic showcase highlighting expertise in creative framing, pacing, and post-production workflows.</p>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 7 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 8 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 9 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 10 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <!-- Video 11 -->
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://instagram.com" allowtransparency="true" allowfullscreen="true"></iframe>
             </div>
         </div>
     </div>
