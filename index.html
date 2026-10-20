@@ -19,7 +19,79 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
+
+        /* تنسيق أيقونة الثلاث شرط أعلى اليسار */
+        .menu-toggle {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            cursor: pointer;
+            z-index: 100;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .menu-toggle .bar {
+            display: block;
+            width: 30px;
+            height: 3px;
+            margin: 6px 0;
+            background-color: #593119; /* بلون البني الفخم الخاص بك */
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+
+        /* القائمة المنسدلة لطرق التواصل */
+        .dropdown-menu {
+            position: absolute;
+            top: 75px;
+            left: 25px;
+            background-color: #0a0503;
+            border: 1px solid #593119;
+            border-radius: 12px;
+            padding: 15px;
+            display: none; /* مخفية في البداية */
+            flex-direction: column;
+            gap: 12px;
+            z-index: 99;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* أزرار التواصل داخل القائمة المنسدلة */
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #fafaf9;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 160px;
+        }
+        .btn-whatsapp { background-color: #25D366; }
+        .btn-instagram { background-color: #E1306C; }
+        .btn-facebook { background-color: #1877F2; }
+        
+        .btn-social:hover {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
+        .btn-social svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
         header {
             width: 100%;
             padding: 45px 20px 30px 20px;
@@ -51,45 +123,11 @@
             letter-spacing: 1px;
         }
         header p {
-            margin: 0 0 20px 0;
+            margin: 0;
             color: #a8a29e;
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        .btn-social {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #fafaf9;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .btn-whatsapp { background-color: #25D366; }
-        .btn-instagram { background-color: #E1306C; }
-        .btn-facebook { background-color: #1877F2; }
-        
-        .btn-social:hover {
-            transform: translateY(-3px);
-            filter: brightness(1.1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-        }
-        .btn-social svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
         }
 
         .portfolio-grid {
@@ -97,7 +135,6 @@
             max-width: 1200px;
             padding: 40px 20px;
             display: grid;
-            /* رص الفيديوهات تلاتات جنب بعض */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 50px;
         }
@@ -111,7 +148,6 @@
             position: relative;
             padding-bottom: 10px;
         }
-        /* اللاين البني الفاصل بين الفيديوهات */
         .video-card::after {
             content: '';
             position: absolute;
@@ -119,12 +155,11 @@
             left: 10%;
             width: 80%;
             height: 1px;
-            background-color: #593119;
+            background-color: #593119; /* الخط الفاصل بين الفيديوهات */
         }
         .video-wrapper {
             width: 100%;
             max-width: 320px;
-            /* ضبط الأبعاد العمودية المثالية لفيديوهات الـ Shorts والموبايل */
             aspect-ratio: 9 / 16; 
             background-color: #000;
             border: 1px solid #1f1109;
@@ -157,6 +192,29 @@
 </head>
 <body>
 
+    <!-- أيقونة الثلاث شرط المضافة أعلى اليسار -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <!-- القائمة المنسدلة التي تحتوي على طرق التواصل -->
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="https://wa.me" target="_blank" class="btn-social btn-whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.182.001 6.176 1.24 8.427 3.496 2.25 2.256 3.487 5.253 3.485 8.436-.004 6.616-5.34 11.964-11.91 11.964-2.006-.001-3.978-.507-5.73-1.47l-6.176 1.618zm6.59-4.846c1.657.982 3.284 1.517 5.32 1.518 5.4 0 9.794-4.398 9.797-9.802.002-2.618-1.013-5.079-2.859-6.929C17.06 2.094 14.6 1.079 11.968 1.079c-5.396 0-9.79 4.396-9.794 9.798-.001 2.128.56 4.195 1.627 5.995L2.73 21.223l4.522-1.186z"/></svg>
+            WhatsApp
+        </a>
+        <a href="https://instagram.com" target="_blank" class="btn-social btn-instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            Instagram
+        </a>
+        <a href="https://facebook.com" target="_blank" class="btn-social btn-facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.95z"/></svg>
+            Facebook
+        </a>
+    </div>
+
     <header>
         <div class="signature-container">
             <svg class="signature-svg" viewBox="0 0 260 130">
@@ -165,25 +223,10 @@
         </div>
         <h1>Hassn Ali</h1>
         <p>Videographer & Video Editor</p>
-        
-        <div class="social-buttons">
-            <a href="https://wa.me" target="_blank" class="btn-social btn-whatsapp">
-                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.182.001 6.176 1.24 8.427 3.496 2.25 2.256 3.487 5.253 3.485 8.436-.004 6.616-5.34 11.964-11.91 11.964-2.006-.001-3.978-.507-5.73-1.47l-6.176 1.618zm6.59-4.846c1.657.982 3.284 1.517 5.32 1.518 5.4 0 9.794-4.398 9.797-9.802.002-2.618-1.013-5.079-2.859-6.929C17.06 2.094 14.6 1.079 11.968 1.079c-5.396 0-9.79 4.396-9.794 9.798-.001 2.128.56 4.195 1.627 5.995L2.73 21.223l4.522-1.186z"/></svg>
-                WhatsApp
-            </a>
-            <a href="https://instagram.com" target="_blank" class="btn-social btn-instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                Instagram
-            </a>
-            <a href="https://facebook.com" target="_blank" class="btn-social btn-facebook">
-                <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.95z"/></svg>
-                Facebook
-            </a>
-        </div>
     </header>
 
     <div class="portfolio-grid">
-        <!-- الفيديو الأول (YouTube Shorts مدمج ديركت) -->
+        <!-- الفيديو الأول (تم تعديل المسار ليعمل ديركت وبأعلى جودة) -->
         <div class="video-card">
             <div class="video-wrapper">
                 <iframe src="https://youtube.com" allowfullscreen></iframe>
@@ -194,6 +237,18 @@
     <footer>
         <p>&copy; 2026 Hassn Ali. All Rights Reserved.</p>
     </footer>
+
+    <!-- الكود البرمجي لتشغيل حركة القائمة المنسدلة عند الضغط -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
 
 </body>
 </html>
