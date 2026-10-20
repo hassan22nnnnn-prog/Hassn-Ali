@@ -22,49 +22,136 @@
             position: relative;
         }
 
-        /* تنسيق أيقونة الثلاث شرط أعلى اليسار */
+        /* تنسيق مستطيل الواجهة بفريم وأوباستي منخفض للصورة المرفوعة */
+        .hero-banner {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+            height: 450px;
+            position: relative;
+            background-image: url('https://githubusercontent.com'); /* مسار سحب صورتك الفخمة */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #593119; /* الفريم البني الفخم */
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 30px rgba(89, 49, 25, 0.3);
+        }
+
+        /* طبقة التعتيم لتقليل الأوباستي وإبراز اللوجو والكلام */
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.65); /* تقليل الشفافية لجعل الكلام حاداً وواضحاً */
+            z-index: 1;
+        }
+
+        /* ضبط محتوى الهيدر ليكون عائماً فوق الصورة */
+        header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* أنيميشن وتكبير الإمضة (اللوجو) */
+        .signature-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 20px rgba(89, 49, 25, 0.9));
+            animation: slideDown 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .signature-svg {
+            width: 320px;
+            height: auto;
+            stroke: #593119;
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-30px) scale(1.1); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        header h1 {
+            margin: 5px 0 5px 0;
+            font-size: 2.5rem;
+            color: #593119;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+        header p {
+            margin: 0 0 15px 0;
+            color: #fafaf9;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+        .about-text {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #a8a29e;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+
+        /* أيقونة الثلاث شرط أعلى اليسار عائمة فوق الصورة */
         .menu-toggle {
             position: absolute;
-            top: 25px;
-            left: 25px;
+            top: 45px;
+            left: 45px;
             cursor: pointer;
             z-index: 100;
-            background: none;
-            border: none;
-            padding: 10px;
+            background: rgba(10, 5, 3, 0.5);
+            border: 1px solid #593119;
+            padding: 8px 10px;
+            border-radius: 8px;
         }
         .menu-toggle .bar {
             display: block;
-            width: 30px;
+            width: 25px;
             height: 3px;
-            margin: 6px 0;
-            background-color: #593119; /* بلون البني الفخم الخاص بك */
+            margin: 5px 0;
+            background-color: #593119;
             transition: 0.4s;
             border-radius: 2px;
         }
 
-        /* القائمة المنسدلة لطرق التواصل */
+        /* القائمة المنسدلة */
         .dropdown-menu {
             position: absolute;
-            top: 75px;
-            left: 25px;
+            top: 95px;
+            left: 45px;
             background-color: #0a0503;
             border: 1px solid #593119;
             border-radius: 12px;
             padding: 15px;
-            display: none; /* مخفية في البداية */
+            display: none;
             flex-direction: column;
             gap: 12px;
             z-index: 99;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-            animation: fadeIn 0.3s ease forwards;
+            animation: dropdownFade 0.3s ease forwards;
         }
-        @keyframes fadeIn {
+        @keyframes dropdownFade {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* أزرار التواصل داخل القائمة المنسدلة */
         .btn-social {
             display: inline-flex;
             align-items: center;
@@ -81,61 +168,15 @@
         .btn-whatsapp { background-color: #25D366; }
         .btn-instagram { background-color: #E1306C; }
         .btn-facebook { background-color: #1877F2; }
-        
-        .btn-social:hover {
-            transform: scale(1.03);
-            filter: brightness(1.1);
-        }
-        .btn-social svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        header {
-            width: 100%;
-            padding: 45px 20px 30px 20px;
-            text-align: center;
-            background: linear-gradient(to bottom, #1a0e07, #000000);
-            border-bottom: 2px solid #593119;
-        }
-        .signature-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 15px rgba(89, 49, 25, 0.7));
-        }
-        .signature-svg {
-            width: 260px;
-            height: auto;
-            stroke: #593119;
-            stroke-width: 2.5;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        header h1 {
-            margin: 5px 0 5px 0;
-            font-size: 2rem;
-            color: #593119;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        header p {
-            margin: 0;
-            color: #a8a29e;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .btn-social:hover { transform: scale(1.03); filter: brightness(1.1); }
+        .btn-social svg { width: 16px; height: 16px; fill: currentColor; }
 
         .portfolio-grid {
             width: 100%;
             max-width: 1200px;
-            padding: 40px 20px;
+            padding: 60px 20px 40px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 50px;
         }
         .video-card {
@@ -146,7 +187,8 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 20px;
+            border: 1px solid #140e0b;
         }
         .video-card::after {
             content: '';
@@ -155,100 +197,56 @@
             left: 10%;
             width: 80%;
             height: 1px;
-            background-color: #593119; /* الخط الفاصل بين الفيديوهات */
+            background-color: #593119;
         }
         .video-wrapper {
             width: 100%;
-            max-width: 320px;
-            aspect-ratio: 9 / 16; 
+            aspect-ratio: 16 / 9;
             background-color: #000;
-            border: 1px solid #1f1109;
-            border-radius: 16px;
+            border-radius: 12px 12px 0 0;
             overflow: hidden;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.8);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .video-wrapper:hover {
-            transform: scale(1.02);
-            border-color: #593119;
-            box-shadow: 0 0 20px rgba(89, 49, 25, 0.4);
+        .video-wrapper iframe { width: 100%; height: 100%; border: 0; }
+        
+        .video-info { width: 100%; padding: 20px 15px 5px 15px; text-align: left; }
+        .video-info h3 { margin: 0 0 5px 0; font-size: 1.15rem; color: #593119; font-weight: 600; }
+        .video-info p { margin: 0; color: #78716c; font-size: 0.85rem; line-height: 1.4; }
+
+        .booking-container { width: 100%; display: flex; justify-content: center; margin: 20px 0 40px 0; }
+        .btn-booking {
+            background-color: transparent; border: 2px solid #593119; color: #fafaf9;
+            padding: 12px 35px; border-radius: 6px; font-size: 1rem; font-weight: 600;
+            text-decoration: none; letter-spacing: 1px; text-transform: uppercase;
+            transition: all 0.3s ease; box-shadow: 0 0 15px rgba(89, 49, 25, 0.2);
         }
-        .video-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
+        .btn-booking:hover { background-color: #593119; box-shadow: 0 0 25px rgba(89, 49, 25, 0.5); transform: translateY(-2px); }
+
+        .camera-contact-btn {
+            position: fixed; bottom: 25px; left: 25px; background-color: #593119;
+            border: 2px solid #000; border-radius: 50%; width: 60px; height: 60px;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 15px rgba(89, 49, 25, 0.6); z-index: 98;
+            cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: #fafaf9;
         }
-        footer {
-            width: 100%;
-            padding: 40px 20px;
-            text-align: center;
-            background-color: #050302;
-            border-top: 1px solid #1f1109;
-            color: #78716c;
-            font-size: 0.9rem;
-            margin-top: auto;
+        .camera-contact-btn:hover { transform: scale(1.1) rotate(-10deg); background-color: #733f20; }
+        .camera-contact-btn svg { width: 28px; height: 28px; fill: currentColor; }
+
+        .chatbot-container { position: fixed; bottom: 25px; right: 25px; z-index: 98; display: flex; flex-direction: column; align-items: flex-end; }
+        .robot-trigger {
+            background-color: #100b09; border: 2px solid #593119; border-radius: 50%; width: 65px; height: 65px;
+            display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            cursor: pointer; transition: all 0.3s ease; position: relative;
         }
-    </style>
-</head>
-<body>
-
-    <!-- أيقونة الثلاث شرط المضافة أعلى اليسار -->
-    <button class="menu-toggle" onclick="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
-
-    <!-- القائمة المنسدلة التي تحتوي على طرق التواصل -->
-    <div class="dropdown-menu" id="dropdownMenu">
-        <a href="https://wa.me" target="_blank" class="btn-social btn-whatsapp">
-            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.966 0c3.182.001 6.176 1.24 8.427 3.496 2.25 2.256 3.487 5.253 3.485 8.436-.004 6.616-5.34 11.964-11.91 11.964-2.006-.001-3.978-.507-5.73-1.47l-6.176 1.618zm6.59-4.846c1.657.982 3.284 1.517 5.32 1.518 5.4 0 9.794-4.398 9.797-9.802.002-2.618-1.013-5.079-2.859-6.929C17.06 2.094 14.6 1.079 11.968 1.079c-5.396 0-9.79 4.396-9.794 9.798-.001 2.128.56 4.195 1.627 5.995L2.73 21.223l4.522-1.186z"/></svg>
-            WhatsApp
-        </a>
-        <a href="https://instagram.com" target="_blank" class="btn-social btn-instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-            Instagram
-        </a>
-        <a href="https://facebook.com" target="_blank" class="btn-social btn-facebook">
-            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.95z"/></svg>
-            Facebook
-        </a>
-    </div>
-
-    <header>
-        <div class="signature-container">
-            <svg class="signature-svg" viewBox="0 0 260 130">
-                <path d="M 35,65 Q 45,66 52,58 T 62,62 T 72,56 Q 82,50 88,58 C 92,32 88,10 93,42 C 96,66 84,78 105,66 C 112,62 118,56 120,48 M 88,32 Q 102,22 108,35 M 72,62 Q 115,55 165,52 Q 155,45 156,58" />
-            </svg>
-        </div>
-        <h1>Hassn Ali</h1>
-        <p>Videographer & Video Editor</p>
-    </header>
-
-    <div class="portfolio-grid">
-        <!-- الفيديو الأول (تم تعديل المسار ليعمل ديركت وبأعلى جودة) -->
-        <div class="video-card">
-            <div class="video-wrapper">
-                <iframe src="https://youtube.com" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Hassn Ali. All Rights Reserved.</p>
-    </footer>
-
-    <!-- الكود البرمجي لتشغيل حركة القائمة المنسدلة عند الضغط -->
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("dropdownMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
+        .robot-trigger:hover { transform: translateY(-5px); border-color: #733f20; }
+        .robot-trigger svg { width: 35px; height: 35px; }
+        
+        .chat-window {
+            width: 320px; background-color: #0c0a09; border: 1px solid #593119; border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 15px; display: none;
+            flex-direction: column; overflow: hidden; animation: chatFadeIn 0.3s ease;
         }
-    </script>
-
-</body>
-</html>
+        @keyframes chatFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .chat-header { background-color: #1a0e07; padding: 12px; border-bottom: 1px solid #593119; font-weight: 600; font-size: 0.95rem; color: #d97706; display: flex; align-items: center; gap: 8px; }
+        .chat-body { padding: 15px; max-height: 250px; overflow-y: auto; font-size: 0.9rem; color: #a8a29e; line-height: 1.5; display: flex; flex-direction: column; gap: 10px; }
+        .chat-bubble { background-color: #1c1917; padding: 10px 14px; border-radius: 12px; color: #fafaf9; width: fit-content; max-width: 90%; }
+        .chat-bubble.user-msg { background-color: #593119; align-self: flex-end; color: #fafaf9; }
