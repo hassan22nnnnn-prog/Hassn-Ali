@@ -5,249 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hassn Ali | Portfolio</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
         body {
-            background-color: #000000;
-            color: #fafaf9;
+            background-color: #000000; color: #fafaf9;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            margin: 0; padding: 0; display: flex; flex-direction: column;
+            align-items: center; min-height: 100vh; overflow-x: hidden; position: relative;
         }
-
-        /* تنسيق مستطيل الواجهة بفريم وأوباستي منخفض للصورة المرفوعة */
         .hero-banner {
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 20px;
-            height: 450px;
-            position: relative;
+            width: 100%; max-width: 1200px; margin-top: 20px; height: 400px; position: relative;
             background-image: url('https://githubusercontent.com');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #593119;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 15px 30px rgba(89, 49, 25, 0.3);
+            background-size: cover; background-position: center; border: 2px solid #593119;
+            border-radius: 16px; overflow: hidden; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; box-shadow: 0 15px 30px rgba(89, 49, 25, 0.3);
         }
-
-        /* طبقة التعتيم لتقليل الأوباستي وإبراز اللوجو والكلام */
         .hero-banner::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.65);
-            z-index: 1;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); z-index: 1;
         }
-
-        /* ضبط محتوى الهيدر ليكون عائماً فوق الصورة */
-        header {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            width: 100%;
-            padding: 20px;
-        }
-
-        /* أنيميشن وتكبير الإمضة (اللوجو) */
+        header { position: relative; z-index: 2; text-align: center; width: 100%; padding: 20px; }
         .signature-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 20px rgba(89, 49, 25, 0.9));
+            display: flex; justify-content: center; align-items: center; margin-bottom: 10px;
+            filter: drop-shadow(0 0 20px rgba(89, 49, 25, 0.8));
             animation: slideDown 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        .signature-svg {
-            width: 320px;
-            height: auto;
-            stroke: #593119;
-            stroke-width: 2.5;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+        .signature-svg { width: 320px; height: auto; stroke: #593119; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
         @keyframes slideDown {
             from { transform: translateY(-30px) scale(1.1); opacity: 0; }
             to { transform: translateY(0) scale(1); opacity: 1; }
         }
-
-        header h1 {
-            margin: 5px 0 5px 0;
-            font-size: 2.5rem;
-            color: #593119;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-        }
-        header p {
-            margin: 0 0 15px 0;
-            color: #fafaf9;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-        }
-        .about-text {
-            max-width: 600px;
-            margin: 0 auto;
-            color: #a8a29e;
-            font-size: 1rem;
-            line-height: 1.6;
-            font-style: italic;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-        }
-
-        /* أيقونة الثلاث شرط أعلى اليسار عائمة فوق الصورة */
-        .menu-toggle {
-            position: absolute;
-            top: 45px;
-            left: 45px;
-            cursor: pointer;
-            z-index: 100;
-            background: rgba(10, 5, 3, 0.5);
-            border: 1px solid #593119;
-            padding: 8px 10px;
-            border-radius: 8px;
-        }
-        .menu-toggle .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px 0;
-            background-color: #593119;
-            transition: 0.4s;
-            border-radius: 2px;
-        }
-
-        /* القائمة المنسدلة */
-        .dropdown-menu {
-            position: absolute;
-            top: 95px;
-            left: 45px;
-            background-color: #0a0503;
-            border: 1px solid #593119;
-            border-radius: 12px;
-            padding: 15px;
-            display: none;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 99;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
-            animation: dropdownFade 0.3s ease forwards;
-        }
-        @keyframes dropdownFade {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-social {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 18px;
-            border-radius: 25px;
-            text-decoration: none;
-            color: #fafaf9;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 160px;
-        }
+        header h1 { margin: 5px 0; font-size: 2.5rem; color: #593119; font-weight: 700; text-shadow: 0 2px 10px #000; }
+        header p { margin: 0 0 15px 0; color: #fafaf9; font-size: 1.1rem; text-transform: uppercase; text-shadow: 0 2px 10px #000; }
+        .about-text { max-width: 600px; margin: 0 auto; color: #a8a29e; font-size: 1rem; line-height: 1.6; font-style: italic; text-shadow: 0 2px 10px #000; }
+        
+        .menu-toggle { position: absolute; top: 45px; left: 45px; cursor: pointer; z-index: 100; background: rgba(10, 5, 3, 0.5); border: 1px solid #593119; padding: 8px 10px; border-radius: 8px; }
+        .menu-toggle .bar { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: #593119; transition: 0.4s; border-radius: 2px; }
+        
+        .dropdown-menu { position: absolute; top: 95px; left: 45px; background-color: #0a0503; border: 1px solid #593119; border-radius: 12px; padding: 15px; display: none; flex-direction: column; gap: 12px; z-index: 99; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); }
+        .btn-social { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 25px; text-decoration: none; color: #fafaf9; font-size: 0.9rem; font-weight: 600; width: 160px; }
         .btn-whatsapp { background-color: #25D366; }
         .btn-instagram { background-color: #E1306C; }
         .btn-facebook { background-color: #1877F2; }
-        .btn-social:hover { transform: scale(1.03); filter: brightness(1.1); }
-        .btn-social svg { width: 16px; height: 16px; fill: currentColor; }
-
-        .portfolio-grid {
-            width: 100%;
-            max-width: 1200px;
-            padding: 60px 20px 40px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-        }
-        .video-card {
-            background-color: #050302;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            padding-bottom: 20px;
-            border: 1px solid #140e0b;
-        }
-        .video-card::after {
-            content: '';
-            position: absolute;
-            bottom: -25px;
-            left: 10%;
-            width: 80%;
-            height: 1px;
-            background-color: #593119;
-        }
-        .video-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background-color: #000;
-            border-radius: 12px 12px 0 0;
-            overflow: hidden;
-        }
-        .video-wrapper iframe { width: 100%; height: 100%; border: 0; }
         
+        .portfolio-grid { width: 100%; max-width: 1200px; padding: 40px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; }
+        .video-card { background-color: #050302; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; align-items: center; position: relative; padding-bottom: 20px; border: 1px solid #140e0b; }
+        .video-card::after { content: ''; position: absolute; bottom: -25px; left: 10%; width: 80%; height: 1px; background-color: #593119; }
+        .video-wrapper { width: 100%; aspect-ratio: 16 / 9; background-color: #000; }
+        .video-wrapper iframe { width: 100%; height: 100%; border: 0; }
         .video-info { width: 100%; padding: 20px 15px 5px 15px; text-align: left; }
-        .video-info h3 { margin: 0 0 5px 0; font-size: 1.15rem; color: #593119; font-weight: 600; }
-        .video-info p { margin: 0; color: #78716c; font-size: 0.85rem; line-height: 1.4; }
+        .video-info h3 { margin: 0; font-size: 1.15rem; color: #593119; font-weight: 600; }
+        .video-info p { margin: 0; color: #78716c; font-size: 0.85rem; }
 
-        .booking-container { width: 100%; display: flex; justify-content: center; margin: 20px 0 40px 0; }
-        .btn-booking {
-            background-color: transparent; border: 2px solid #593119; color: #fafaf9;
-            padding: 12px 35px; border-radius: 6px; font-size: 1rem; font-weight: 600;
-            text-decoration: none; letter-spacing: 1px; text-transform: uppercase;
-            transition: all 0.3s ease; box-shadow: 0 0 15px rgba(89, 49, 25, 0.2);
-        }
-        .btn-booking:hover { background-color: #593119; box-shadow: 0 0 25px rgba(89, 49, 25, 0.5); transform: translateY(-2px); }
+        .booking-container { width: 100%; display: flex; justify-content: center; margin: 40px 0; }
+        .btn-booking { background-color: transparent; border: 2px solid #593119; color: #fafaf9; padding: 12px 35px; border-radius: 6px; font-size: 1rem; font-weight: 600; text-decoration: none; text-transform: uppercase; transition: 0.3s; }
+        .btn-booking:hover { background-color: #593119; }
 
-        .camera-contact-btn {
-            position: fixed; bottom: 25px; left: 25px; background-color: #593119;
-            border: 2px solid #000; border-radius: 50%; width: 60px; height: 60px;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 4px 15px rgba(89, 49, 25, 0.6); z-index: 98;
-            cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: #fafaf9;
-        }
-        .camera-contact-btn:hover { transform: scale(1.1) rotate(-10deg); background-color: #733f20; }
+        .camera-contact-btn { position: fixed; bottom: 25px; left: 25px; background-color: #593119; border: 2px solid #000; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(89, 49, 25, 0.6); z-index: 98; text-decoration: none; color: #fafaf9; }
         .camera-contact-btn svg { width: 28px; height: 28px; fill: currentColor; }
 
         .chatbot-container { position: fixed; bottom: 25px; right: 25px; z-index: 98; display: flex; flex-direction: column; align-items: flex-end; }
-        .robot-trigger {
-            background-color: #100b09; border: 2px solid #593119; border-radius: 50%; width: 65px; height: 65px;
-            display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            cursor: pointer; transition: all 0.3s ease; position: relative;
-        }
-        .robot-trigger:hover { transform: translateY(-5px); border-color: #733f20; }
+        .robot-trigger { background-color: #100b09; border: 2px solid #593119; border-radius: 50%; width: 65px; height: 65px; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); cursor: pointer; }
         .robot-trigger svg { width: 35px; height: 35px; }
-        
-        .chat-window {
-            width: 320px; background-color: #0c0a09; border: 1px solid #593119; border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 15px; display: none;
-            flex-direction: column; overflow: hidden; animation: chatFadeIn 0.3s ease;
-        }
-        @keyframes chatFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .chat-window { width: 320px; background-color: #0c0a09; border: 1px solid #593119; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 15px; display: none; flex-direction: column; overflow: hidden; }
         .chat-header { background-color: #1a0e07; padding: 12px; border-bottom: 1px solid #593119; font-weight: 600; font-size: 0.95rem; color: #d97706; display: flex; align-items: center; gap: 8px; }
-        .chat-body { padding: 15px; max-height: 250px; overflow-y: auto; font-size: 0.9rem; color: #a8a29e; line-height: 1.5; display: flex; flex-direction: column; gap: 10px; }
+        .chat-body { padding: 15px; max-height: 250px; overflow-y: auto; font-size: 0.9rem; color: #a8a29e; display: flex; flex-direction: column; gap: 10px; }
         .chat-bubble { background-color: #1c1917; padding: 10px 14px; border-radius: 12px; color: #fafaf9; width: fit-content; max-width: 90%; }
-        .chat-bubble.user-msg { background-color: #593119; align-self: flex-end; color: #fafaf9; }
-        .chat-options { padding: 10px 15px; border-top: 1px solid #1c1917; display: flex; gap: 8px; flex-wrap: wrap; background-color: #050302; }
+        .chat-bubble.user-msg { background-color: #593119; align-self: flex-end; }
+        .chat-options { padding: 10px 15px; border-top: 1px solid #1c1917; display: flex; background-color: #050302; }
+        .option-btn { background-color: #1c1917; border: 1px solid #593119; color: #fafaf9; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; }
+        footer { width: 100%; padding: 30px 20px; text-align: center; background-color: #050302; border-top: 1px solid #1f1109; color: #78716c; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="https://whatsapp.com" target="_blank" class="btn-social btn-whatsapp">WhatsApp</a>
+        <a href="https://instagram.com___" target="_blank" class="btn-social btn-instagram">Instagram</a>
+        <a href="https://facebook.com" id="fb-link" target="_blank" class="btn-social btn-facebook">Facebook</a>
+    </div>
+
+    <div class="hero-banner">
+        <header>
+            <div class="signature-container">
+                <svg class="signature-svg" viewBox="0 0 260 130"><path d="M 35,65 Q 45,66 52,58 T 62,62 T 72,56 Q 82,50 88,58 C 92,32 88,10 93,42 C 96,66 84,78 105,66 C 112,62 118,56 120,48 M 88,32 Q 102,22 108,35 M 72,62 Q 115,55 165,52 Q 155,45 156,58" /></svg>
+            </div>
+            <h1>Hassn Ali</h1>
+            <p>Videographer & Video Editor</p>
+            <p class="about-text">"Creating cinematic visual experiences through high-end filming and post-production workflows."</p>
+        </header>
+    </div>
+
+    <div class="portfolio-grid">
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://youtube.com" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Cinematic Showreel / Project I</h3>
+                <p>Directed & Color Graded by Hassn Ali.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-container">
+        <a href="https://whatsapp.com&text=Request%20Booking" target="_blank" class="btn-booking">Request a Booking</a>
+    </div>
+
+    <a href="https://whatsapp.com" class="camera-contact-btn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+    </a>
+
+    <div class="chatbot-container">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">Hassn's Cam-Bot</div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-bubble">أهلاً بك في موقع حسن علي! 📸 أنا الروبوت المساعد لحسن، كيف أقدر أساعدك اليوم؟</div>
+            </div>
+            <div class="chat-options" id="chatOptions">
+                <button class="option-btn" onclick="askPrices()">الاستفسار عن الأسعار</button>
+            </div>
+        </div>
+        <button class="robot-trigger" onclick="toggleChat()">
